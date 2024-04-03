@@ -1,4 +1,14 @@
-import nmap
+
+import sys  
+import threading  
+import ipaddress  
+import re 
+from scapy.all import *  
+import nmap  
+
+# Set to store scanned hosts to avoid duplicate scans
+scanned_hosts = set()  # Initialize an empty set to store scanned hosts
+lock = threading.Lock()  # Create a lock to ensure thread-safe access to shared resources
 
 def nmap_vulnerability_scan(host):
     try:
@@ -23,3 +33,5 @@ def nmap_vulnerability_scan(host):
 
 # Example usage
 nmap_vulnerability_scan("your_target_host_or_ip")
+
+# Your Turn!
