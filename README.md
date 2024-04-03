@@ -4,6 +4,9 @@
 ![image](https://github.com/FishyStix12/BH.py-CharCyCon2024/assets/102126354/789f42ac-1c0f-46c3-b3d0-e023e83c6c0c) <br />
 **Welcome to the Black Hat Python Course For CharCyCon 2024!** <br />
 
+**The file below is the PowerPoint used in the course:** <br />
+Black Hat Python Course.pptx <br />
+
 # Exploring Network Security with Python and Nmap <br />
 ![image](https://github.com/FishyStix12/BH.py-CharCyCon2024/assets/102126354/76ab306e-4086-4a48-86f7-b0efc97be95d) <br />
 **The Script below is the script we will be analyzing in the first part of the course:**
