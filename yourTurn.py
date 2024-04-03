@@ -15,12 +15,19 @@ import nmap
 scanned_hosts = set()  # Initialize an empty set to store scanned hosts
 lock = threading.Lock()  # Create a lock to ensure thread-safe access to shared resources
 
-def nmap_vulnerability_scan(host):
+def nmap_vulnerability_scan(host, tcp_ports=None):
     try:
         # Create Nmap PortScanner object
         nm = nmap.PortScanner()
-        # Perform Nmap vulnerability scan on the specified host
-        nm.scan(hosts=host, arguments='') # Reference the net_terrorizer.py file or use google fu to determine how to configure your nmap scan
+        
+        # Construct Nmap arguments based on TCP ports input
+        nmap_args = ''
+        if tcp_ports:
+            nmap_args += f'-p {tcp_ports}'
+        
+        # Perform Nmap vulnerability scan on the specified host with optional TCP ports
+        nm.scan(hosts=host, arguments=nmap_args)
+        
         # Process and print vulnerability scan results
         for host in nm.all_hosts():
             print("Vulnerability Scan Results for Host:", host)
@@ -36,8 +43,12 @@ def nmap_vulnerability_scan(host):
     except Exception as e:
         print(f"Error during vulnerability scan: {e}")
 
-# Example usage
-nmap_vulnerability_scan("your_target_host_or_ip")
+# Ask user for target IP address and TCP ports input
+target_ip = input("Enter the target IP address: ")
+tcp_ports_input = input("Enter TCP ports to scan (e.g., 22-25,80,443): ")
+
+# Example usage with user input
+nmap_vulnerability_scan(target_ip, tcp_ports_input)
 
 # Your Turn!
 # Reference the net_terrorizer.py file or use google fu to determine how to configure the rest of your script.
