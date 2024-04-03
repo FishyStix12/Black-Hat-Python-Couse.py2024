@@ -1,2 +1,3 @@
-# BH.py-CharCyCon2024
-A repository of scripts to aid with the the Black Hat Python Course for CharCyCon 2024
+# CharCyCon 2024: Black Hat Python <br />
+# By Nicholas Fisher <br /> 
+**Welcome to the Black Hat Python Course For CharCyCon 2024!** <br />
