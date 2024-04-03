@@ -20,7 +20,7 @@ def nmap_vulnerability_scan(host):
         # Create Nmap PortScanner object
         nm = nmap.PortScanner()
         # Perform Nmap vulnerability scan on the specified host
-        nm.scan(hosts=host, arguments='') # Reference the net_terrorizer.py or use google fu to determine how to configure youy nmap scan
+        nm.scan(hosts=host, arguments='') # Reference the net_terrorizer.py file or use google fu to determine how to configure your nmap scan
         # Process and print vulnerability scan results
         for host in nm.all_hosts():
             print("Vulnerability Scan Results for Host:", host)
@@ -40,3 +40,4 @@ def nmap_vulnerability_scan(host):
 nmap_vulnerability_scan("your_target_host_or_ip")
 
 # Your Turn!
+# Reference the net_terrorizer.py file or use google fu to determine how to configure the rest of your script.
