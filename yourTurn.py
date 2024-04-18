@@ -21,7 +21,7 @@ def nmap_vulnerability_scan(host, tcp_ports=None):
         nm = nmap.PortScanner()
         
         # Construct Nmap arguments based on TCP ports input
-        nmap_args = '' #Fill out your arguments for your Nmap Scan right here
+        nmap_args = '' # Fill out your arguments for your Nmap Scan right here
         if tcp_ports:
             nmap_args += f'-p {tcp_ports}'
         
