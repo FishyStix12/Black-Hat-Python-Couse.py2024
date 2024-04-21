@@ -3,7 +3,7 @@
 # Author: Nicholas Fisher
 # Date: April 21st 2024
 # Description of Script
-# Sets up the Course Environment for the CharCyCon 2024 Black Hat Python Course.
+# Sets up the Course Environment in Kali Linux for the CharCyCon 2024 Black Hat Python Course.
 #################################################################################################
 cd ~
 mkdir ~/BhPython2024
