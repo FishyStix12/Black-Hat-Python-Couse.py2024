@@ -4,51 +4,33 @@
 # Date:
 # Description of Script:
 #################################################################################################
-import sys  
-import threading  
-import ipaddress  
-import re 
-from scapy.all import *  
-import nmap  
+import ipaddress
+import re
+import sys
+import subprocess
 
-# Set to store scanned hosts to avoid duplicate scans
-scanned_hosts = set()  # Initialize an empty set to store scanned hosts
-lock = threading.Lock()  # Create a lock to ensure thread-safe access to shared resources
-
-def nmap_vulnerability_scan(host, tcp_ports=None):
+def nmap_scan(host, port_range=None):
     try:
-        # Create Nmap PortScanner object
-        nm = nmap.PortScanner()
-        
-        # Construct Nmap arguments based on TCP ports input
-        nmap_args = '' # Fill out your arguments for your Nmap Scan right here
-        if tcp_ports:
-            nmap_args += f'-p {tcp_ports}'
-        
-        # Perform Nmap vulnerability scan on the specified host with optional TCP ports
-        nm.scan(hosts=host, arguments=nmap_args)
-        
-        # Process and print vulnerability scan results
-        for host in nm.all_hosts():
-            print("Vulnerability Scan Results for Host:", host)
-            # Check if there are any vulnerability scripts for the current host
-            if 'scripts' in nm[host]:
-                # Iterate over each vulnerability script result
-                for script_id, script_output in nm[host]['scripts'].items():
-                    print(f"Script ID: {script_id}")
-                    print("Output:")
-                    print(script_output)
-            else:
-                print("No vulnerability scripts found for this host.")
+        # Construct Nmap command with techniques to avoid firewall detection
+        if port_range:
+            arguments = f'' # Your turn
+        else:
+            arguments = '' # Your Turn
+
+        # Add firewall evasion options
+        arguments += ' -f -D RND:10'
+
+        # Run Nmap command using subprocess
+        command = f"nmap {arguments} {host}"
+        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        stdout, stderr = process.communicate()
+
+        # Extract CVEs and Metasploit modules if they exist
+        cves = re.findall(r"CVE-\d+-\d+", stdout.decode())
+        metasploit_modules = re.findall(r"exploit/(.*?)/", stdout.decode())
+
+        return stdout.decode(), stderr.decode(), cves, metasploit_modules
+
     except Exception as e:
-        print(f"Error during vulnerability scan: {e}")
-
-# Ask user for target IP address and TCP ports input
-target_ip = input("Enter the target IP address: ")
-tcp_ports_input = input("Enter TCP ports to scan (e.g., 22-25,80,443): ")
-
-# Example usage with user input
-nmap_vulnerability_scan(target_ip, tcp_ports_input)
-
-# Your Turn!
-# Reference the net_terrorizer.py file or use google fu to determine how to configure the rest of your script.
+        return f"Error during Nmap scan: {e}", "", [], []
+# Please Finish the rest of your own script below!
