@@ -7,6 +7,9 @@
 **The file below is the PowerPoint used in the course:** <br />
 Black Hat Python Course.pptx <br />
 
+**To set up the class environment please downdload and run the script below in your Linux instance:** <br />
+1. course-repo-conf.sh - Sets up the Course Environment in Kali Linux for the CharCyCon 2024 Black Hat Python Course. <br />
+
 # Exploring Network Security with Python and Nmap <br />
 ![image](https://github.com/FishyStix12/BH.py-CharCyCon2024/assets/102126354/76ab306e-4086-4a48-86f7-b0efc97be95d) <br />
 **The Script below is the script we will be analyzing in the first part of the course:**
