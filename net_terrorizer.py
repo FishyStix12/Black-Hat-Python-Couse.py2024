@@ -21,11 +21,13 @@ import subprocess
 
 def nmap_scan(host, port_range=None):
     try:
-        # Construct Nmap command with techniques to avoid firewall detection
+        # Construct Nmap command with techniques to avoid firewall detection, and will attempt to detect if host is scanning a honeypot
         if port_range:
-            arguments = f'-T2 -sS -sV -O --version-all --script=banner -A --script vulners -p {port_range} --mtu 16 --badsum --data-length 500'
+            arguments = f'-T2 -sS -sV -O --version-all --script=http-honeypot,firewalk,banner,vulners -A -p {port_range} --mtu 16 --badsum --data-length 500'
+        elif:
+            arguments = f'-T2 -sS -sV -Pn -O --version-all --script=http-honeypot,firewalk,banner,vulners -A -p {port_range} --mtu 16 --badsum --data-length 500'
         else:
-            arguments = '-T2 -sS -sV -O --version-all --script=banner -A --script vulners --mtu 16 --badsum --data-length 500'
+            arguments = '-T2 -sS -sV -Pn -O --version-all --script=http-honeypot,firewalk,banner,vulners -A -p- --mtu 16 --badsum --data-length 500'
 
         # Add firewall evasion options
         arguments += ' -f -D RND:10'
