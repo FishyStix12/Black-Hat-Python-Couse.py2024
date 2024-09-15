@@ -4,33 +4,32 @@
 # Date:
 # Description of Script:
 #################################################################################################
-import ipaddress
-import re
-import sys
 import subprocess
+import sys
+import re
+import ipaddress
 
-def nmap_scan(host, port_range=None):
+def prompt_for_scripts():
+    # Your turn
+
+    # Ask the user for each script
+    for script, description in script_descriptions.items():
+        user_input = input(f"Do you want to use the {script} script? ({description}) [y/N]: ").lower()
+        if user_input == 'y':
+            scripts.append(script)
+    
+    return ','.join(scripts) if scripts else None
+
+def nmap_scan(host, port_range):
     try:
-        # Construct Nmap command with techniques to avoid firewall detection
+        # Get the scripts the user wants to use
+        selected_scripts = prompt_for_scripts()
+
+        # Define the Nmap scan arguments based on the port range and selected scripts
         if port_range:
-            arguments = f'' # Your turn
-        else:
-            arguments = '' # Your Turn
-
-        # Add firewall evasion options
-        arguments += ' -f -D RND:10'
-
-        # Run Nmap command using subprocess
-        command = f"nmap {arguments} {host}"
-        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        stdout, stderr = process.communicate()
-
-        # Extract CVEs and Metasploit modules if they exist
-        cves = re.findall(r"CVE-\d+-\d+", stdout.decode())
-        metasploit_modules = re.findall(r"exploit/(.*?)/", stdout.decode())
-
-        return stdout.decode(), stderr.decode(), cves, metasploit_modules
-
-    except Exception as e:
-        return f"Error during Nmap scan: {e}", "", [], []
-# Please Finish the rest of your own script below!
+            # Your turn
+def main():
+    try:
+        # Prompt user for input: list of remote IP addresses or CIDR notations
+        remote_input = input("Enter the list of remote IP addresses or CIDR notations to scan (press Enter to exit): ").split()
+        # Your Turn
