@@ -38,6 +38,16 @@ def prompt_for_scripts():
         "snmp-processes": "Enumerates running processes via SNMP.",
         "snmp-sysdescr": "Retrieves system information via SNMP.",
         "snmp-win32-software": "Enumerates installed software on Windows systems via SNMP."
+        "ftp-bounce": "
+        "netbios-ssn": "
+        "http-title": "
+        "http-auth-finder": "
+        "ssh-auth-methods": "
+        "http-enum": "
+        "http-sql-injection": "
+        "http-stored-xss": "
+        "smb-vuln-ms17-010": "
+        "ftp-vsftpd-backdoor": "
     }
     
     # Ask the user for each script
